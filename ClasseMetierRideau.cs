@@ -39,7 +39,7 @@
         }
 
         // Constructeur
-        public ClasseMetier(decimal LargeurFenetre, decimal HauteurFenetre, decimal AmpleurFenetre, int NumTissu, int NumModele)
+        public ClasseMetierRideau(decimal LargeurFenetre, decimal HauteurFenetre, decimal AmpleurFenetre, int NumTissu, int NumModele)
         {
             this.LargeurFenetre = LargeurFenetre;
             this.HauteurFenetre = HauteurFenetre;
@@ -50,15 +50,15 @@
             // Rechercher CoefOurlet dans la Base
             CoefOurlet = TableTissu.CoefOurlet(this.NumTissu);
             // Rechercher CoutHoraire dans la Base
-            CoutHoraire = … A compléter
-               // Rechercher TempsTravailMetre dans la Base
-            TempsTravailMetre = … A compléter
+            CoutHoraire = CoutFacon();
+            // Rechercher TempsTravailMetre dans la Base
+            TempsTravailMetre = TempsTravail();
               // Rechercher les prix des tissus dans la Base
             PrixTissu1 = TableTissu.PrixTissu(NumTissu, 1);
             PrixTissu2 = TableTissu.PrixTissu(NumTissu, 2);
             PrixTissu3 = TableTissu.PrixTissu(NumTissu, 3);
             // Rechercher la largeur des tissus dans la Base
-            LargeurTissu = … A compléter
+            LargeurTissu = TableTissu.SQLLargeurTissu(NumTissu) ;
      }
 
         public decimal NbHauteur()
@@ -69,27 +69,27 @@
         public decimal Metrage()
         {
             // Voir fonction CoefOurlet dans la classeADO --> table TISSU 
-            return //… A compléter
+            return Math.Round(NbHauteur() * HauteurFenetre * CoefOurlet);
         }
 
         public decimal SurfaceUtile()
         {
-            return //… A compléter
+            return Math.Round(HauteurFenetre * CoefOurlet * LargeurFenetre * AmpleurFenetre);
         }
 
         public decimal SurfaceChute()
         {
-            return //… A compléter
+            return (Metrage() * LargeurTissu) - SurfaceUtile();
         }
 
         public decimal TempsTravail()
         {
-            return //… A compléter
+            return TempsTravailMetre * SurfaceUtile();
         }
 
         public decimal CoutFacon()
         {
-            return //… A compléter
+            return TempsTravail() * CoutHoraire;
         }
 
         public decimal CoutTissu()
@@ -108,7 +108,7 @@
 
         public decimal CoutTotal()
         {
-            return //… A compléter
+            return CoutFacon() + CoutTissu();
         }
 
     }

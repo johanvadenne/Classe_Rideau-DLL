@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Classe_Rideau
 {
-    internal class ClasseTissu
+    public class ClasseTissu
     {
         // instancier la classe d'accès aux données
         ClasseADO BdRideau = new ClasseADO();

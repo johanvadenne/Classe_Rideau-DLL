@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Classe_Rideau
 {
-    internal class ClasseADO
+    public class ClasseADO
     {
         public ClasseADO()
         { }

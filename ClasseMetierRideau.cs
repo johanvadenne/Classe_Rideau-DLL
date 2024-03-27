@@ -47,13 +47,14 @@
             this.NumTissu = NumTissu;
             this.NumModele = NumModele;
 
+
             // Rechercher CoefOurlet dans la Base
             CoefOurlet = TableTissu.CoefOurlet(this.NumTissu);
             // Rechercher CoutHoraire dans la Base
-            CoutHoraire = CoutFacon();
+            CoutHoraire = TableModele.CoutHoraire(NumModele);
             // Rechercher TempsTravailMetre dans la Base
-            TempsTravailMetre = TempsTravail();
-              // Rechercher les prix des tissus dans la Base
+            TempsTravailMetre = TableModele.TempsTravailMetre(NumModele);
+            // Rechercher les prix des tissus dans la Base
             PrixTissu1 = TableTissu.PrixTissu(NumTissu, 1);
             PrixTissu2 = TableTissu.PrixTissu(NumTissu, 2);
             PrixTissu3 = TableTissu.PrixTissu(NumTissu, 3);
